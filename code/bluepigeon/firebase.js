@@ -4,88 +4,87 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { updateUser, populatePosts } from "./main";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCX7_mBI0DiJbMnKiLRCfVy8PFBjbA_Ig0",
-    authDomain: "honeypot-d6a9d.firebaseapp.com",
-    projectId: "honeypot-d6a9d",
-    storageBucket: "honeypot-d6a9d.appspot.com",
-    messagingSenderId: "177328351587",
-    appId: "1:177328351587:web:f33564d08c8f02c2fc8b56"
-};
+    apiKey: "Your_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "Your_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
 
 let token;
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    export const auth = getAuth(app);
 
-export const loginFirebase = async (email, password) => {
-    return await signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            return userCredential;
-        })
-        .catch((err) => {
-            alert(err);
-        });
-}
+    export const loginFirebase = async (email, password) => {
+        return await signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                return userCredential;
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
 
 export const registerFirebase = async (email, password) => {
-    return await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            return userCredential;
-        })
-        .catch((err) => {
-            alert(err);
-        })
-}
-
-export const logoutFirebase = async (email) => {
-    getToken()
-        .then(async (tokeni) => {
-            const body = JSON.stringify({
-                email
-            });
-            fetch("http://localhost:8080/deactivate", {
-                method: "POST",
-                body,
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + tokeni,
-                },
+        return await createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                return userCredential;
             })
-                .then(result => result.json())
-                .catch(error => console.log(error))
-            return await signOut(auth).then((data) => {
-            }).catch((err) => {
+            .catch((err) => {
                 alert(err);
             })
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-        });
-}
+    }
+
+export const logoutFirebase = async (email) => {
+        getToken()
+            .then(async (tokeni) => {
+                const body = JSON.stringify({
+                    email
+                });
+                fetch("http://localhost:8080/deactivate", {
+                    method: "POST",
+                    body,
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + tokeni,
+                    },
+                })
+                    .then(result => result.json())
+                    .catch(error => console.log(error))
+                return await signOut(auth).then((data) => {
+                }).catch((err) => {
+                    alert(err);
+                })
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
 
 export const getToken = async () => {
-    return new Promise((resolve, reject) => {
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                try {
-                    const firebaseUserIdToken = await user.getIdToken(true);
-                    token = firebaseUserIdToken;
-                    resolve(firebaseUserIdToken);
-                } catch (error) {
-                    reject(error);
-                } finally {
-                    unsubscribe(); // Make sure to unsubscribe when done
+        return new Promise((resolve, reject) => {
+            const unsubscribe = onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    try {
+                        const firebaseUserIdToken = await user.getIdToken(true);
+                        token = firebaseUserIdToken;
+                        resolve(firebaseUserIdToken);
+                    } catch (error) {
+                        reject(error);
+                    } finally {
+                        unsubscribe(); // Make sure to unsubscribe when done
+                    }
+                } else {
+                    reject("User is not authenticated.");
+                    unsubscribe(); // Unsubscribe in case of error
                 }
-            } else {
-                reject("User is not authenticated.");
-                unsubscribe(); // Unsubscribe in case of error
-            }
+            });
         });
-    });
-};
+    };
 
-onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, async (user) => {
     if (user) {
         sessionStorage.setItem("user", JSON.stringify(user));
         updateUser();
