@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="http://localhost/honey/index.php" content="noindex, nofollow">
+  <title>BluePigeon - Your Pigoen Website</title>
+  <script type="module" src="/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <nav class="header container">
+        <a href="#" class="logo">BluePigeon</a>
+        <div class="header-right signup-container">
+          <a id="signup" href="#">Sign Up</a>
+        </div>
+        <div class="header-right user">
+          <div>
+            <a id="user" href="#"></a>
+          </div>
+          <div class="avatar-wrapper">
+            <img class="profile-pic" src="./profile.svg" />
+            <div class="upload-button"></div>
+            <input class="file-upload" type="file" accept="image/jpeg, image/png" />
+          </div>
+          <a id="logout" href="#">Logout</a>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="titles">
+        <h1 class="location" id="locationTitle">Recent Posts</h1>
+        <h1 class="location" id="right-title">Random Chuck Norris Fact</h1>
+      </div>
+      <section class="mid">
+        <section class="pigeons">
+          <p>Log in to view posts</p>
+        </section>
+        <section class="pigeons chuck">
+        </section>
+      </section>
+    </main>
+    <!-- <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">BluePigeon is your ticket to a wild world of social media. We're not your average
+              platform; we're all about embracing the unusual, the absurd, and the downright crazy. With our "Pigeon
+              Post" feature, send messages like a true feathered friend—just hope they don't drop mid-air! Dive into our
+              "Feather-brained Funnies" for daily avian-inspired laughs, and jazz up your chats with our fun emoji
+              stickers. Ready to take flight into a world of fun? Join us at BluePigeon, where tweets are a hoot, and
+              we're as silly as a barrel of parrots! 🐦💨.</p>
+          </div>
+
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by
+              <a href="#">BluePigeon</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <div class="overlay">
+      <div class="form-structor">
+        <img class="x" src="/x.svg">
+        <form class="signup">
+          <h2 class="form-title">Sign up</h2>
+          <div class="form-holder">
+            <input type="text" class="input" placeholder="Name" id="nameSignUp" required />
+            <input type="email" class="input" placeholder="Email" id="emailSignUp" size="30" required />
+            <input type="password" class="input" placeholder="Password" id="passwordSignUp" required />
+          </div>
+          <input type="submit" class="submit-btn" id="signup-btn">
+        </form>
+        <form class="login slide-up">
+          <div class="center">
+            <h2 class="form-title" id="login">Log in</h2>
+            <div class="form-holder">
+              <input type="email" class="input" placeholder="Email" id="email" />
+              <input type="password" class="input" placeholder="Password" id="password" />
+            </div>
+            <button type="submit" class="submit-btn" id="login-btn">Log in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

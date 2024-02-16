@@ -1,0 +1,88 @@
+body {
+	font-family: Arial, sans-serif;
+}
+.admin-panel {
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f5f5f5;
+}
+.user-section {
+	background-color: #fff;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+h2 {
+	margin-bottom: 10px;
+}
+.user-list-item {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+.user-list-item:last-child {
+	border-bottom: none;
+}
+.user-list-item span {
+	flex: 1;
+}
+.header-item {
+	font-weight: bold;
+}
+.action-buttons button {
+	padding: 0.5rem;
+	border-radius: 2rem;
+	border: none;
+	cursor: pointer;
+}
+
+.action-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navBtn {
+	padding: 1rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	border-radius: 2rem;
+	border: none;
+}
+
+.refresh {
+	padding: 1rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	border-radius: 2rem;
+	border: none;
+}
+
+.nav {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.hidden {
+	display: none;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 3rem;
+	border-bottom: solid black 3px;
+	padding: 1rem;
+}
+
+.delete {
+	background-color: #c21807;
+	color: white;
+}
+
+.enable {
+	background-color: #3f704d;
+	color: white;
+}
